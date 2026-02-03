@@ -1,17 +1,10 @@
 name: Run Android build
 
 on:
-  pull_request:
-    paths:
-      - 'dist/**.js'
-      - '.github/*.json'
+  workflow_dispatch:
   push:
-    branches:
-      - main
-      - releases/*
     paths:
       - 'dist/**.js'
-      - '.github/*.json'
 
 jobs:
   build:
@@ -36,7 +29,7 @@ jobs:
           path: ./build/
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'temurin'
